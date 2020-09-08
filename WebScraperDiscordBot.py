@@ -30,7 +30,7 @@ def parseWebPage(content):
     #Use Beautiful soup HTML parser to split it up to work with
     soup = BeautifulSoup(content, features="html.parser")
     #Find upcoming events tag
-    upcomingEvents = []
+    #upcomingEvents is a list of events.
     upcomingEvents = soup.find('div', attrs={'class':'lw_cal_upcoming_events'}) #Specific find for upcoming events
     return upcomingEvents
 
@@ -47,8 +47,8 @@ def getEventOnly(eventContents):
 
 ###Gets rid of leftover html parsed "\n" and replaces it with space
 def trimText(events):
-    for event in range(len(events)):
-        events[event] = str(events[event]).replace('\n', '')
+    for event in events:
+        event = str(event).replace('\n', '')
     print(events)
 
 ###Goes through list of events and sends them (properly formatted)
