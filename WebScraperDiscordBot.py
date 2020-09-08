@@ -63,14 +63,10 @@ async def sendEvents(events):
         else:
             await sendMessage(events[event])
 
-#Feel like this could be improved
 ###Takes text and sees if it begins with a day of the week
 def startsWithDay(text):
-    days = ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"]    
-    for day in days:
-        if text.upper().startswith(day):
-            return True
-    return False
+    days =  {"SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"}    
+    return list(filter(text.upper().startswith, days)) != []
 
 ###Sends a message to the channel, formats it without 'All Day' if that is included
 async def sendMessage(text):
